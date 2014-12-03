@@ -24,6 +24,7 @@
 # Create the plot using the Base Graphics Package
 # Steps: Create PNG output device, create the plot, close the output device.
     png(filename="plot1.png", width=480, height=480, units = "px")
+    par(bg="transparent")
     hist(data$Global_active_power, main="Global Active Power", col="red", 
          xlab="Global Active Power (kilowatts)", bg="transparent")
     dev.off()
@@ -31,6 +32,7 @@
 #======================Plot 2===================================================
 
     png(filename="plot2.png", width=480, height=480, units = "px")
+    par(bg="transparent")
     with(data, plot(Global_active_power, type="l", xaxt="n", xlab="",
                     ylab="Global Active Power (kilowatts)"), bg="transparent")
     axis(1, at=c(0, 1440, 2880), labels = c("Thu", "Fri", "Sat"))
@@ -42,6 +44,7 @@
 #   and close device.
 
     png(filename="plot3.png", width=480, height=480, units = "px")
+    par(bg="transparent")
     plot(data$Sub_metering_1, type="l", xaxt="n", xlab="", 
          ylab="Energy sub metering", bg="transparent")
     axis(1, at=c(0, 1440, 2880), labels = c("Thu", "Fri", "Sat"))
@@ -55,9 +58,9 @@
 
 
     orig.par<-par()
-    par(mfcol=c(2,2), bg="transparent")
 
     png(filename="plot4.png", width=480, height=480, units = "px")
+    par(mfcol=c(2,2), bg="transparent")
 
 # Plot 2 repeated with ylab changed
     with(data, plot(Global_active_power, type="l", xaxt="n", xlab="",
